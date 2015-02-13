@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ekfApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+
+  <title>ek*f Community | Directory</title>
+
+  <link href="css/style.default.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/bootstrap-timepicker.min.css" />
+  <link rel="stylesheet" href="css/jquery.tagsinput.css" />
+  <link rel="stylesheet" href="css/colorpicker.css" />
+  <link rel="stylesheet" href="css/dropzone.css" />
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <style>
+body {
+    margin: 0;            /* Reset default margin */
+}
+iframe {
+    display: block;       /* iframes are inline by default */
+    background: #000;
+    border: none;         /* Reset default border */
+    height: 90vh;        /* Viewport-relative units */
+    width: 80vw;
+}
+</style>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+
+
+<section>
+  
+  <div class="leftpanel">
+    
+    <div class="logopanel">
+        <h1><span>[</span> ek*f <span>]</span></h1>
+    </div><!-- logopanel -->
+    
+    <div class="leftpanelinner">
+      <h5 class="sidebartitle">Navigation</h5>
+      <ul class="nav nav-pills nav-stacked nav-bracket">
+        <li><a href="#/index"><i class="fa fa-home"></i> <span>Home</span></a></li>
+        <li><a href="#/email"><span class="pull-right badge badge-success">2</span><i class="fa fa-envelope-o"></i> <span>Email</span></a></li>
+        <li><a href="#/forum"><i class="fa fa-th-list"></i> <span>Forums</span></a></li>
+        <li class="active"><a href="#/directory"><i class="fa fa-users"></i> <span>Directory</span></a></li>
+      </ul>
+      
+
+
+    </div><!-- leftpanelinner -->
+  </div><!-- leftpanel -->
+  
+  <div class="mainpanel">
+    
+    <div class="headerbar">      
+      
+      <div class="header-right" ng-controller="NavCtrl">
+        <ul class="headermenu">
+          <li>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <img src="images/photos/loggeduser.png" alt="" />
+                {{active_user.displayname}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                <li><a href="profile.html"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Account Settings</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
+                <li><a href="/api/auth/logout"><i class="glyphicon glyphicon-log-out"></i> Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div><!-- header-right -->
+      
+    </div><!-- headerbar -->
+
+    <!-- angular loads partials here -->
+    <div ng-view></div>
+
+  </div><!-- mainpanel -->
+  
+
+  
+</section>
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery-ui-1.10.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.sparkline.min.js"></script>
+<script src="js/toggles.min.js"></script>
+<script src="js/retina.min.js"></script>
+<script src="js/jquery.cookies.js"></script>
+
+<script src="js/jquery.autogrow-textarea.js"></script>
+<script src="js/bootstrap-timepicker.min.js"></script>
+<script src="js/jquery.maskedinput.min.js"></script>
+<script src="js/jquery.tagsinput.min.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/select2.min.js"></script>
+<script src="js/dropzone.min.js"></script>
+<script src="js/colorpicker.js"></script>
+
+<script src="js/holder.js"></script>
+
+<script src="/angular/angular.js"></script>
+<script src="/angular-route/angular-route.js"></script>
+<script src="/angular-sanitize/angular-sanitize.js"></script>
+
+
+<script src="js/custom.js"></script>
+
+<script src="/ekfApp.js"></script>
+
+
+<script>
+jQuery(document).ready(function(){
+    
+    "use strict";
+  
+  // Tags Input
+  jQuery('#tags').tagsInput({width:'auto'});
+  
+  jQuery(".select2").select2({
+    width: '250px'
+  });
+
+  // Textarea Autogrow
+  jQuery('#autoResizeTA').autogrow();
+  
+  // Color Picker
+  if(jQuery('#colorpicker').length > 0) {
+   jQuery('#colorSelector').ColorPicker({
+      onShow: function (colpkr) {
+        jQuery(colpkr).fadeIn(500);
+        return false;
+      },
+      onHide: function (colpkr) {
+        jQuery(colpkr).fadeOut(500);
+        return false;
+      },
+      onChange: function (hsb, hex, rgb) {
+        jQuery('#colorSelector span').css('backgroundColor', '#' + hex);
+        jQuery('#colorpicker').val('#'+hex);
+      }
+   });
+  }
+  
+  // Color Picker Flat Mode
+  jQuery('#colorpickerholder').ColorPicker({
+    flat: true,
+    onChange: function (hsb, hex, rgb) {
+      jQuery('#colorpicker3').val('#'+hex);
+    }
+  });
+   
+  // Date Picker
+  jQuery('#datepicker').datepicker();
+  
+  jQuery('#datepicker-inline').datepicker();
+  
+  jQuery('#datepicker-multiple').datepicker({
+    numberOfMonths: 3,
+    showButtonPanel: true
+  });
+  
+  // Spinner
+  var spinner = jQuery('#spinner').spinner();
+  spinner.spinner('value', 0);
+  
+  // Input Masks
+  jQuery("#date").mask("99/99/9999");
+  jQuery("#phone").mask("(999) 999-9999");
+  jQuery("#ssn").mask("999-99-9999");
+  
+  // Time Picker
+  jQuery('#timepicker').timepicker({defaultTIme: false});
+  jQuery('#timepicker2').timepicker({showMeridian: false});
+  jQuery('#timepicker3').timepicker({minuteStep: 15});
+
+  
+});
+</script>
+
+</body>
+</html>

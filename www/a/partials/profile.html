@@ -1,0 +1,65 @@
+        
+    <div class="pageheader">
+      <h2><i class="fa fa-user"></i> Profile <span>{{user.displayname}}</span></h2>
+      <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+          <li><a href="home.html">ek*f</a></li>
+          <li><a href="home.html">Directory</a></li>
+          <li class="active">Profile</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="contentpanel" ng-controller="DirectoryCtrl">
+      
+      <div class="row">
+        <div class="col-sm-3">
+          <img src="{{user.photo}}" class="thumbnail img-responsive"/>
+          <div class="mb30"></div>
+          
+          
+          <h5 class="subtitle">Connect</h5>
+          <ul class="profile-social-list">
+            <li ng-show="user.twitter.length>0"><i class="fa fa-twitter"></i> <a href="{{user.twitter[1]}}">{{user.twitter[0]}}</a></li>
+            <li ng-show="user.facebook.length>0"><i class="fa fa-facebook"></i> <a href="{{user.facebook[1]}}">{{user.facebook[0]}}</a></li>
+            <li ng-show="user.linkedin.length>0"><i class="fa fa-linkedin"></i> <a href="{{user.linkedin[1]}}">{{user.linkedin[0]}}</a></li>
+            <li ng-show="user.phone.length>0"><i class="fa fa-phone"></i> <a href="">{{user.phone}}</a></li>
+            <li ng-show="user.email.length>0"><i class="fa fa-envelope"></i> <a href="mailto:{{user.email}}">{{user.email}}</a></li>
+          </ul>
+          
+          <div class="mb30"></div>
+          
+        </div><!-- col-sm-3 -->
+        <div class="col-sm-9">
+          
+          <div class="profile-header">
+            <h2 class="profile-name">{{user.displayname}}</h2>
+            <div class="profile-location"><i class="fa fa-map-marker"></i> {{user.location}}</div>
+            <div class="profile-position"><i class="fa fa-briefcase"></i> {{user.job}} </div>
+            
+            <div class="mb20"></div>
+            
+            <button class="btn btn-success mr5"><i class="fa fa-envelope-o"></i> Message</button>
+          </div><!-- profile-header -->
+          
+          <div class="tab-content">
+                <h5 class="subtitle">About</h5>
+                <p class="mb30">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat... <a href="">Show More</a></p>
+          </div>
+
+        </div><!-- col-sm-9 -->
+      </div><!-- row -->
+      
+    </div><!-- contentpanel -->
+
+
+<script src="js/jquery.prettyPhoto.js"></script>
+
+<script>
+  jQuery(document).ready(function(){
+    
+    jQuery("a[data-rel^='prettyPhoto']").prettyPhoto();
+    
+  });
+</script>

@@ -1,0 +1,15 @@
+# psql
+create user ekf;
+create database ekf owner=ekf;
+\connect ekf;
+create table users (
+	username 	varchar(255) primary key,
+	firstname 	varchar(255) NOT NULL,
+	lastname 	varchar(255) NOT NULL,
+	location 	varchar(255) NOT NULL,
+
+	myhash 		varchar(255),
+	mysalt 		varchar(255)
+);
+
+ALTER TABLE users OWNER TO ekf;

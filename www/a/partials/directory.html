@@ -1,0 +1,86 @@
+
+        
+    <div class="pageheader">
+      <h2><i class="fa fa-user"></i> People Directory
+      </h2>
+      <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+          <li><a href="index.html">ek*f</a></li>
+          <li class="active">People Directory</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="contentpanel"  ng-controller="DirectoryCtrl">
+      
+      <div class="form-group">
+        <h5 class="sidebartitle">Filter by:
+
+            <select class="select2" ng-model="userType" data-placeholder="User Type...">
+              <option value="" ></option>
+              <option value="Any">Any</option>
+              <option value="Entrepreneur">Entrepreneur</option>
+              <option value="Mentor">Mentor</option>
+              <option value="Investor">ek*f partner</option>
+            </select>
+            <select class="select2" ng-model="userLocation" data-placeholder="Country...">
+              <option value=""></option>
+              <option value="Any">Any</option>
+              <option value="US-West">US - West Coast</option>
+              <option value="US-East">US - East Coast</option>
+              <option value="France">France</option>
+              <option value="Other">Other</option>
+            </select>
+            <select class="select2" ng-model="userSkill" data-placeholder="Skill...">
+              <option value=""></option>
+              <option value="Any">Any</option>
+              <option value="Business Development">Business Development</option>
+              <option value="Fund Raising">Fund Raising</option>
+              <option value="Recruiting">Recruiting</option>
+              <option value="General Coaching">General Coaching</option>
+            </select>
+        </h5>
+      </div>
+
+      <div class="mb30"></div>
+      
+      <div class="people-list">
+        <div class="row" ng-repeat="user in filteredUsers"> <!-- | filter:searchTerm : orderBy: -->
+          <div class="col-md-6">
+            <div class="people-item">
+              <div class="media">
+                <a href="#" class="pull-left">
+                  <img alt="" src="{{user.photo}}" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                  <h4 class="person-name"><a href="#/profile/{{user.id}}">{{user.displayname}}</a></h4>
+                  <div class="text-muted"><i class="fa fa-map-marker"></i>{{user.location}}</div>
+                  <div class="text-muted"><i class="fa fa-briefcase"></i>{{user.job}}</div>
+                  <ul class="social-list">
+                    <li><a href="" class="tooltips" data-toggle="tooltip" data-placement="top" title="Email"><i class="fa fa-envelope-o"></i></a></li>
+                    <li><a href="" class="tooltips" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="" class="tooltips" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="" class="tooltips" data-toggle="tooltip" data-placement="top" title="Skype"><i class="fa fa-skype"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div><!-- col-md-6 -->          
+        </div><!-- row -->
+      </div><!-- people-list -->
+      
+    </div><!-- contentpanel -->
+
+
+
+    <script>
+jQuery(document).ready(function(){
+    "use strict";
+    
+    jQuery(".select2").select2({
+      width: '250px'
+    });  
+});
+</script>
+    
